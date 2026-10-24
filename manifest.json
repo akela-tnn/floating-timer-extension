@@ -1,0 +1,20 @@
+{
+  "manifest_version": 3,
+  "name": "網頁浮動倒數計時器",
+  "version": "1.1.0",
+  "description": "在網頁中央浮動顯示倒數計時，支援點擊工具列圖示喚出面板、自訂色彩、字體大小與 Web Audio 鬧鈴提醒。",
+  "action": {
+    "default_title": "開啟/關閉計時器面板"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "css": ["styles.css"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}

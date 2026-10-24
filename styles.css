@@ -1,0 +1,285 @@
+/* ==========================================================================
+   Chrome Extension Floating Countdown Timer Styles
+   ========================================================================== */
+
+/* 1. 中央浮動倒數顯示區 */
+#chrome-timer-overlay {
+  position: fixed !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  z-index: 2147483646 !important;
+  pointer-events: none !important;
+  user-select: none !important;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+  font-weight: 800 !important;
+  line-height: 1 !important;
+  text-align: center !important;
+  display: none;
+  color: #ffffff;
+  text-shadow: 
+    0 0 10px rgba(0, 0, 0, 0.9),
+    0 0 20px rgba(0, 0, 0, 0.8),
+    2px 2px 4px rgba(0, 0, 0, 0.9),
+    -2px -2px 4px rgba(0, 0, 0, 0.9),
+    2px -2px 4px rgba(0, 0, 0, 0.9),
+    -2px 2px 4px rgba(0, 0, 0, 0.9) !important;
+  transition: color 0.2s ease, font-size 0.1s ease;
+}
+
+/* 2. 右上角浮動控制面板 (預設隱藏，按擴充圖示才顯示) */
+#chrome-timer-panel {
+  position: fixed !important;
+  top: 16px !important;
+  right: 16px !important;
+  z-index: 2147483647 !important;
+  width: 295px !important;
+  background: rgba(24, 24, 28, 0.88) !important;
+  backdrop-filter: blur(14px) saturate(160%) !important;
+  -webkit-backdrop-filter: blur(14px) saturate(160%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.14) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45) !important;
+  color: #f3f4f6 !important;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+  font-size: 13px !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+  display: none; /* 預設不自動彈出 */
+}
+
+#chrome-timer-panel * {
+  box-sizing: border-box !important;
+  font-family: inherit !important;
+}
+
+/* 標題列 */
+.chrome-timer-header {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 10px 14px !important;
+  background: rgba(255, 255, 255, 0.04) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+  user-select: none !important;
+}
+
+.chrome-timer-title {
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.5px !important;
+}
+
+.chrome-timer-header-actions {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+
+.chrome-timer-btn-icon {
+  background: transparent !important;
+  border: none !important;
+  color: #9ca3af !important;
+  font-size: 15px !important;
+  cursor: pointer !important;
+  padding: 0 2px !important;
+  line-height: 1 !important;
+  transition: color 0.15s ease;
+}
+
+.chrome-timer-btn-icon:hover {
+  color: #ffffff !important;
+}
+
+.chrome-timer-btn-close:hover {
+  color: #ef4444 !important;
+}
+
+/* 面板內容區 */
+.chrome-timer-body {
+  padding: 12px 14px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 12px !important;
+}
+
+#chrome-timer-panel.chrome-timer-minimized .chrome-timer-body {
+  display: none !important;
+}
+
+/* 列排版 */
+.chrome-timer-row {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+}
+
+.chrome-timer-label {
+  color: #9ca3af !important;
+  font-size: 12px !important;
+}
+
+/* 時間設定 */
+.chrome-timer-inputs {
+  display: flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+}
+
+.chrome-timer-number-input {
+  width: 48px !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.16) !important;
+  border-radius: 6px !important;
+  color: #ffffff !important;
+  padding: 5px 6px !important;
+  font-size: 13px !important;
+  text-align: center !important;
+  outline: none !important;
+}
+
+.chrome-timer-number-input:focus {
+  border-color: #60a5fa !important;
+}
+
+/* 鬧鈴開關與音量滑桿整合區 */
+.chrome-timer-alarm-group {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  width: 100% !important;
+  gap: 10px !important;
+}
+
+.chrome-timer-alarm-toggle {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 5px !important;
+  white-space: nowrap !important;
+  flex-shrink: 0 !important;
+}
+
+.chrome-timer-volume-group {
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  flex: 1 !important;
+  max-width: 135px !important;
+  margin-right: 4px !important;
+}
+
+.chrome-timer-volume-slider {
+  flex: 1 !important;
+  width: 80px !important;
+  cursor: pointer !important;
+  accent-color: #60a5fa !important;
+  margin: 0 !important;
+}
+
+/* 字體大小調整滑桿 */
+.chrome-timer-slider-group {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  flex: 1 !important;
+  max-width: 160px !important;
+  margin-right: 4px !important;
+}
+
+.chrome-timer-slider {
+  flex: 1 !important;
+  cursor: pointer !important;
+  accent-color: #60a5fa !important;
+}
+
+.chrome-timer-value {
+  width: 36px !important;
+  text-align: right !important;
+  font-size: 11px !important;
+  color: #d1d5db !important;
+  flex-shrink: 0 !important;
+}
+
+/* 顏色選擇色塊 */
+.chrome-timer-color-palette {
+  display: flex !important;
+  gap: 8px !important;
+}
+
+.chrome-timer-color-swatch {
+  width: 20px !important;
+  height: 20px !important;
+  border-radius: 50% !important;
+  cursor: pointer !important;
+  border: 2px solid transparent !important;
+  transition: transform 0.15s ease, border-color 0.15s ease;
+}
+
+.chrome-timer-color-swatch:hover {
+  transform: scale(1.15) !important;
+}
+
+.chrome-timer-color-swatch.active {
+  border-color: #ffffff !important;
+  box-shadow: 0 0 0 2px rgba(96, 165, 250, 0.8) !important;
+}
+
+/* 控制按鈕 */
+.chrome-timer-btn-grid {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 6px !important;
+  margin-top: 2px !important;
+}
+
+.chrome-timer-btn {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-radius: 6px !important;
+  color: #ffffff !important;
+  padding: 6px 0 !important;
+  font-size: 12px !important;
+  cursor: pointer !important;
+  transition: background 0.15s ease, transform 0.05s ease !important;
+}
+
+.chrome-timer-btn:hover {
+  background: rgba(255, 255, 255, 0.18) !important;
+}
+
+.chrome-timer-btn:active {
+  transform: scale(0.97) !important;
+}
+
+.chrome-timer-btn-primary {
+  background: #2563eb !important;
+  border-color: #3b82f6 !important;
+}
+
+.chrome-timer-btn-primary:hover {
+  background: #1d4ed8 !important;
+}
+
+/* 停止鬧鈴按鈕 */
+.chrome-timer-btn-alert {
+  width: 100% !important;
+  background: #dc2626 !important;
+  border: 1px solid #ef4444 !important;
+  border-radius: 6px !important;
+  color: #ffffff !important;
+  padding: 8px 0 !important;
+  font-weight: 600 !important;
+  font-size: 12px !important;
+  cursor: pointer !important;
+  display: none;
+  animation: chrome-timer-pulse 1.2s infinite;
+}
+
+.chrome-timer-btn-alert:hover {
+  background: #b91c1c !important;
+}
+
+@keyframes chrome-timer-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.75; }
+}
